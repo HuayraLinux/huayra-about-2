@@ -4,3 +4,7 @@
 Fue reescrita desde cero para Huayra 6 usando Gambas3.
 
 
+![](src/media/screenshot.png)
+
+
+
