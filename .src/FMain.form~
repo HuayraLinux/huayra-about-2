@@ -1,0 +1,123 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,651,455)
+  #Scaled = False
+  Expand = True
+  Resizable = False
+  { PictureBox1 PictureBox
+    Move(0,-7,665,476)
+    AutoResize = True
+    Picture = Picture["media/fondo.jpeg"]
+    Alignment = Align.TopRight
+  }
+  { Salir Button
+    Move(588,413,49,28)
+    Text = ("Salir")
+  }
+  { !copiar Button
+    Move(469,413,112,28)
+    #Public = True
+    Text = ("Copiar info")
+    Default = True
+  }
+  { Label1 Label
+    Move(7,210,168,28)
+    Font = Font["Play,+2"]
+    Text = ("versión")
+    Alignment = Align.Right
+  }
+  { Label2 Label
+    Move(189,203,308,42)
+    Font = Font["Play,+2"]
+    Foreground = &H0060C0&
+    Alignment = Align.Left
+  }
+  { Label3 Label
+    Move(7,238,168,28)
+    Font = Font["Play,+2"]
+    Text = ("Base")
+    Alignment = Align.Right
+  }
+  { Label4 Label
+    Move(189,238,371,28)
+    Font = Font["Play,+1"]
+    Foreground = Color.DarkGray
+  }
+  { Label5 Label
+    Move(7,266,168,28)
+    Font = Font["Play,+2"]
+    Text = ("Arquitectura")
+    Alignment = Align.Right
+  }
+  { Label6 Label
+    Move(189,266,371,28)
+    Font = Font["Play,+1"]
+    Foreground = Color.DarkGray
+  }
+  { Label7 Label
+    Move(7,294,168,28)
+    Font = Font["Play,+2"]
+    Text = ("Memoria")
+    Alignment = Align.Right
+  }
+  { Label8 Label
+    Move(189,294,371,28)
+    Font = Font["Play,+1"]
+    Foreground = Color.DarkGray
+  }
+  { Label9 Label
+    Move(7,322,168,28)
+    Font = Font["Play,+2"]
+    Text = ("Microprocesador")
+    Alignment = Align.Right
+  }
+  { Label10 Label
+    Move(189,322,441,28)
+    Font = Font["Play,+1"]
+    Foreground = Color.DarkGray
+  }
+  { Label11 Label
+    Move(7,350,168,28)
+    Font = Font["Play,+2"]
+    Text = ("Kernel")
+    Alignment = Align.Right
+  }
+  { Label12 Label
+    Move(189,350,371,28)
+    Font = Font["Play,+1"]
+    Foreground = Color.DarkGray
+  }
+  { Label13 Label
+    Move(7,378,168,28)
+    Font = Font["Play,+2"]
+    Text = ("IP local")
+    Alignment = Align.Right
+  }
+  { Label14 Label
+    Move(189,378,371,28)
+    Font = Font["Play,+1"]
+    Foreground = Color.DarkGray
+    Text = ("IP local")
+  }
+  { Label15 Label
+    Move(7,406,168,28)
+    Font = Font["Play,+2"]
+    Text = ("IP pública")
+    Alignment = Align.Right
+  }
+  { Label16 Label
+    Move(189,406,196,28)
+    Font = Font["Play,+1"]
+    Foreground = Color.DarkGray
+    Text = ("IP local")
+  }
+  { Label17 Label
+    Move(378,413,259,28)
+    Visible = False
+    Font = Font["Play,+2"]
+    Foreground = Color.DarkGreen
+    Text = ("Info copiada al Portapapeles.")
+    Alignment = Align.Right
+  }
+}

@@ -1,0 +1,141 @@
+' Gambas class file
+
+
+'' Copyleft 2023 - Diego Accorinti (Huayra 6 norte)
+'  Licencia: GPLv3 (ver http://www.gnu.org/licenses/gpl.html)
+
+
+Public Sub Form_Open()
+
+'' Versión de Huayra
+''--------------------------------------------------------------------------------------------------------------
+
+   Dim version As String
+   Dim codename As String
+   Dim arquitectura As String
+   Dim memoria As String
+   Dim aMemoria As Array
+   Dim micro As String
+   Dim aMicro As Array
+   Dim kernel As String
+   Dim aKernel As Array
+   Dim ippublica As String
+   Dim iplocal As String
+   
+   
+   
+   
+   version = File.Load("/etc/huayra_version")
+
+ Select version[0]
+Case "6"
+codename = "[NORTE]"
+Case "5"
+codename = "[AUSTRAL]"
+Case "4"
+  codename = "[ZONDA]"
+Case "3"
+  codename = "[SUD]"
+Case "2"
+  codename = "[PAMPERO]"
+Case "1" 
+  codename = "[BRISA]"
+
+End Select
+   
+   Label2.Text = "Huayra " & Trim(version) & " " & codename
+
+
+
+''base
+''--------------------------------------------------------------------------------------------------------------
+
+  version = File.Load("/etc/debian_version")
+
+ Select version[0, 2]
+Case "11"
+codename = "[BULLSEYE]"
+Case "10"
+codename = "[BUSTER]"
+Case "9"
+  codename = "[STRETCH]"
+
+End Select
+   
+   Label4.Text = "Debian " & Trim(version) & " " & codename
+
+
+'' Arquitectura
+''--------------------------------------------------------------------------------------------------------------
+
+Shell "uname -m" Wait To arquitectura
+If Exist("/sys/firmware/efi") Then
+    arquitectura = Trim(arquitectura) & " (modo UEFI)"
+   Else
+    arquitectura = Trim(arquitectura) & " (modo BIOS)"
+   
+Endif
+Label6.Text = Trim(arquitectura)
+
+
+
+'' Memoria
+''--------------------------------------------------------------------------------------------------------------
+memoria = File.Load("/proc/meminfo")
+aMemoria = Split(memoria, " ", "", True, "")
+memoria = Str(Round(aMemoria[1] / 1048576, -2)) & " GB"
+Label8.Text = Trim(memoria)
+
+'' Microprocesador
+''--------------------------------------------------------------------------------------------------------------
+micro = File.Load("/proc/cpuinfo")
+aMicro = Split(micro, ":", "", True, "")
+micro = Trim(Replace$(Trim(aMicro[5]), "stepping", ""))
+Label10.Text = micro
+
+'' Kernel
+''--------------------------------------------------------------------------------------------------------------
+Shell "uname -v" Wait To kernel
+aKernel = Split(kernel, " ", "", True, "")
+kernel = Trim(aKernel[2] & aKernel[3] & aKernel[4])
+Label12.Text = kernel
+
+'' IP pública y local
+''--------------------------------------------------------------------------------------------------------------
+Shell "hostname -I" Wait To iplocal
+Label14.text = Trim(iplocal)
+Shell "curl ifconfig.me" Wait To ippublica 
+Label16.Text = Trim(ippublica)
+
+End
+
+
+
+Public Sub Salir_Click()
+Quit
+End
+
+
+Public Sub copiar_Click()
+Dim informacion As String
+
+informacion &= "Acerca de Huayra · " & Day(Now) & "/" & Month(Now) & "/" & Year(Now) & "\n"
+informacion &= "--------------------------------------" & "\n"
+informacion &= Label1.Text & " : " & Label2.Text & "\n"
+informacion &= Label3.Text & " : " & Label4.Text & "\n"
+informacion &= Label5.Text & " : " & Label6.Text & "\n"
+informacion &= Label7.Text & " : " & Label8.Text & "\n"
+informacion &= Label9.Text & " : " & Label10.Text & "\n"
+informacion &= Label11.Text & " : " & Label12.Text & "\n"
+informacion &= Label13.Text & " : " & Label14.Text & "\n"
+informacion &= Label15.Text & " : " & Label16.Text & "\n"
+
+Clipboard.Copy(informacion, "text/plain")
+copiar.Visible = False
+salir.Visible = False
+Label17.Visible = True
+
+
+End
+
+

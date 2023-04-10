@@ -1,0 +1,24 @@
+# Gambas Project File 3.0
+Title=Acerca de Huayra
+Startup=FMain
+Icon=media/icono.jpg
+Version=0.6.2
+Component=gb.image
+Component=gb.gtk3
+Component=gb.form
+Authors="Diego Accorinti"
+TabSize=2
+Language=es_AR
+Maintainer=Diego Accorinti
+Vendor=EquipoHuayra
+VendorPrefix=equipohuayra
+Address=daccorinti@educar.gob.ar
+Url=huayra.educar.gob.ar
+License=General Public License
+PackageName=huayra-about-0.6.2
+PackageVersion=2
+Packager=1
+Systems=debian
+Menus=debian:"Applications/Education"
+Categories=debian:"Education;Huayra"
+Groups=debian:"education"
