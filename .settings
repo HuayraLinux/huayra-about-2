@@ -11,8 +11,8 @@ Path="huayra-about2.gambas"
 
 [OpenFile]
 File[1]=".src/FMain.form"
-Active=1
-File[2]=".src/FMain.class:0.120"
+Active=2
+File[2]=".src/FMain.class:55.98"
 Count=2
 
 [Package]
