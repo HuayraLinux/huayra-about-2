@@ -13,6 +13,7 @@ Public Sub Form_Open()
    Dim version As String
    Dim prettyname As String
    Dim codename As String
+   Dim isobuild As String
    Dim arquitectura As String
    Dim memoria As String
    Dim aMemoria As Array
@@ -25,7 +26,7 @@ Public Sub Form_Open()
    
    
    
-   
+' // Version 6.0   
    ' version = File.Load("/etc/huayra_version")
 ' Select version[0]
 'Case "6"
@@ -42,6 +43,7 @@ Public Sub Form_Open()
 '  codename = "[BRISA]"
 '
 'End Select
+'   Label2.Text = "Huayra " & Trim(version) & " " & codename
 
 version = File.Load("/etc/os-release")
 
@@ -49,21 +51,25 @@ prettyname = String.Mid(version, InStr(version, "PRETTY_NAME=") + 13, 25)
 
 prettyname = String.Mid(prettyname, 1, String.InStr(prettyname, Chr(34)) - 1)
 
-'Print version
 codename = String.Mid(version, InStr(version, "VERSION_CODENAME=") + 18, 25)
-
-'Print "primera version " & codename & "-----" 
 
 codename = String.Mid(codename, 1, String.InStr(codename, Chr(34)) - 1)
 
-'Print "segunda version " & codename & "----"
 
-   
-'   Label2.Text = "Huayra " & Trim(version) & " " & codename
-   Label2.Text = Trim(prettyname) & " [" & Upper(codename) & "]"
+Label2.Text = Trim(prettyname) & " (" & Upper(codename) & ")"
 
+If Exist("/etc/iso-build") Then
+  isobuild = File.Load("/etc/iso-build")
 
+  isobuild = Replace(isobuild, Chr(10), " (")
+  isobuild = Replace(isobuild, Chr(13), "  ")
+  isobuild = String.Mid(isobuild, InStr(isobuild, "version ") + 9, 100)
+  isobuild = String.Mid(isobuild, 1, String.Len(Trim(isobuild)) - 1)
 
+  Label19.Text = Trim(isobuild) & ")"
+Else
+  Label19.Text = Trim(prettyname)
+Endif
 ''base
 ''--------------------------------------------------------------------------------------------------------------
 
@@ -71,11 +77,11 @@ codename = String.Mid(codename, 1, String.InStr(codename, Chr(34)) - 1)
 
  Select version[0, 2]
 Case "11"
-codename = "[BULLSEYE]"
+codename = "(BULLSEYE)"
 Case "10"
-codename = "[BUSTER]"
+codename = "(BUSTER)"
 Case "9"
-  codename = "[STRETCH]"
+  codename = "(STRETCH)"
 
 End Select
    
@@ -139,6 +145,7 @@ Dim informacion As String
 informacion &= "Acerca de Huayra · " & Day(Now) & "/" & Month(Now) & "/" & Year(Now) & "\n"
 informacion &= "--------------------------------------" & "\n"
 informacion &= Label1.Text & " : " & Label2.Text & "\n"
+informacion &= Label20.Text & " : " & Label19.Text & "\n"
 informacion &= Label3.Text & " : " & Label4.Text & "\n"
 informacion &= Label5.Text & " : " & Label6.Text & "\n"
 informacion &= Label7.Text & " : " & Label8.Text & "\n"
@@ -156,3 +163,15 @@ Label17.Visible = True
 End
 
 
+
+Public Sub PictureBox1_MouseDown()
+
+  
+
+End
+
+Public Sub Label20_MouseDown()
+
+  
+
+End
