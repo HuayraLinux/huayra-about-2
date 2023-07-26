@@ -11,6 +11,7 @@ Public Sub Form_Open()
 ''--------------------------------------------------------------------------------------------------------------
 
    Dim version As String
+   Dim prettyname As String
    Dim codename As String
    Dim arquitectura As String
    Dim memoria As String
@@ -25,25 +26,41 @@ Public Sub Form_Open()
    
    
    
-   version = File.Load("/etc/huayra_version")
+   ' version = File.Load("/etc/huayra_version")
+' Select version[0]
+'Case "6"
+'codename = "[NORTE]"
+'Case "5"
+'codename = "[AUSTRAL]"
+'Case "4"
+'  codename = "[ZONDA]"
+'Case "3"
+'  codename = "[SUD]"
+'Case "2"
+'  codename = "[PAMPERO]"
+'Case "1" 
+'  codename = "[BRISA]"
+'
+'End Select
 
- Select version[0]
-Case "6"
-codename = "[NORTE]"
-Case "5"
-codename = "[AUSTRAL]"
-Case "4"
-  codename = "[ZONDA]"
-Case "3"
-  codename = "[SUD]"
-Case "2"
-  codename = "[PAMPERO]"
-Case "1" 
-  codename = "[BRISA]"
+version = File.Load("/etc/os-release")
 
-End Select
+prettyname = String.Mid(version, InStr(version, "PRETTY_NAME=") + 13, 25)
+
+prettyname = String.Mid(prettyname, 1, String.InStr(prettyname, Chr(34)) - 1)
+
+'Print version
+codename = String.Mid(version, InStr(version, "VERSION_CODENAME=") + 18, 25)
+
+'Print "primera version " & codename & "-----" 
+
+codename = String.Mid(codename, 1, String.InStr(codename, Chr(34)) - 1)
+
+'Print "segunda version " & codename & "----"
+
    
-   Label2.Text = "Huayra " & Trim(version) & " " & codename
+'   Label2.Text = "Huayra " & Trim(version) & " " & codename
+   Label2.Text = Trim(prettyname) & " [" & Upper(codename) & "]"
 
 
 
