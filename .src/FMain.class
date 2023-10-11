@@ -76,10 +76,14 @@ Endif
   version = File.Load("/etc/debian_version")
 
  Select version[0, 2]
+Case "13"
+  codename = "[TRIXIE]"
+Case "12"
+  codename = "[BOOKWORM]"
 Case "11"
-codename = "(BULLSEYE)"
+  codename = "(BULLSEYE)"
 Case "10"
-codename = "(BUSTER)"
+  codename = "(BUSTER)"
 Case "9"
   codename = "(STRETCH)"
 
