@@ -55,8 +55,9 @@ codename = String.Mid(version, InStr(version, "VERSION_CODENAME=") + 18, 25)
 
 codename = String.Mid(codename, 1, String.InStr(codename, Chr(34)) - 1)
 
+ codename = Upper(codename)
 
-Label2.Text = Trim(prettyname) & " (" & Upper(codename) & ")"
+Label2.Text = Trim(prettyname) & " (" & codename & ")"
 
 If Exist("/etc/iso-build") Then
   isobuild = File.Load("/etc/iso-build")
@@ -70,6 +71,18 @@ If Exist("/etc/iso-build") Then
 Else
   Label19.Text = Trim(prettyname)
 Endif
+
+'' Muestro la imagen que corresponda según repo
+Select codename
+Case "ROSAS"
+  PictureBox1.Picture = Picture.Load("media/acerca_bonaerense.png")
+Case "RAFAGA"
+  PictureBox1.Picture = Picture.Load("media/fondo_6-5.png")
+Case "NORTE"
+  PictureBox1.Picture = Picture.Load("media/fondo.jpeg")
+End Select
+
+
 ''base
 ''--------------------------------------------------------------------------------------------------------------
 
@@ -169,12 +182,6 @@ End
 
 
 Public Sub PictureBox1_MouseDown()
-
-  
-
-End
-
-Public Sub Label20_MouseDown()
 
   
 

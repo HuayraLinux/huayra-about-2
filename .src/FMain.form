@@ -1,20 +1,13 @@
 # Gambas Form File 3.0
 
 { Form Form
-  Move(0,0,651,483)
+  Move(0,0,647,504)
   #Scaled = False
   Expand = True
   Resizable = False
-  { PictureBox2 PictureBox
-    Move(-7,28,665,497)
-    AutoResize = True
-    Picture = Picture["media/fondo.jpeg"]
-    Alignment = Align.TopRight
-  }
   { PictureBox1 PictureBox
-    Move(0,-7,665,497)
+    Move(0,0,665,497)
     AutoResize = True
-    Picture = Picture["media/fondo.jpeg"]
     Alignment = Align.TopRight
   }
   { Salir Button
