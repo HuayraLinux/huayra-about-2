@@ -1,8 +1,8 @@
 # Gambas Project File 3.0
 Title=Acerca de Huayra
 Startup=FMain
-Icon=media/icono.jpg
-Version=0.7.0
+Icon=media/icono_about.png
+Version=0.7.1
 Component=gb.image
 Component=gb.gtk3
 Component=gb.form
@@ -17,7 +17,7 @@ VendorPrefix=equipohuayra
 Address=daccorinti@educar.gob.ar
 Url=huayra.educar.gob.ar
 License=General Public License
-PackageName=huayra-about-2-0.7.0
+PackageName=huayra-about-2-0.7.1
 PackageVersion=5
 Packager=1
 Systems=debian
